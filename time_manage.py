@@ -64,7 +64,7 @@ def progres_bar():
     #Check if the file exists in the times folder
     if not os.path.exists("times") or not os.path.exists("times/times_" + time.strftime("%Y-%m-%d") + ".txt"):
         print(">-||", end="")
-        for i in range(Hours)*4:
+        for i in range(Hours * 4):
             print("█", end="")
         print("||-<", end="")
 
@@ -84,6 +84,7 @@ def progres_bar():
         file.close()
 
         #Print the progress bar with the total time worked
+
         print(">|", end="")
         #Green part
         for i in range(total_time//900):
