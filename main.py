@@ -1,22 +1,24 @@
 import os
-import time
 from time_manage import *
 from api_parser import *
 from various import *
 
 
 def main():
- 
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     while True:
-        progress_bar()
+
+        progres_bar()
+        
         menu()
+        
         option = input("Option: ")
 
-        if option == "1":
+        if option == "1" or option == "":
             imput_time()
 
         elif option == "2":
-            #load_times()
             print("Coming soon")
         elif option == "3":
             break

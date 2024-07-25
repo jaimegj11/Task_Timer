@@ -1,6 +1,8 @@
 import time
 import os
 
+
+
 def imput_time():
     
     # Get the start time
@@ -22,6 +24,8 @@ def imput_time():
     w_imput_time(client_name, task_description, time_taken, start_time, end_time)
 
     return time_taken
+
+
 
 def w_imput_time(client_name, task_description, time_taken, start_time, end_time):
     # Check if the file exists in the times folder
@@ -51,3 +55,41 @@ def w_imput_time(client_name, task_description, time_taken, start_time, end_time
     # Close the file
     file.close()
 
+
+def progres_bar():
+    
+    Hours = 7
+    block = "█"
+    color_code = 32
+    #Check if the file exists in the times folder
+    if not os.path.exists("times") or not os.path.exists("times/times_" + time.strftime("%Y-%m-%d") + ".txt"):
+        print(">-||", end="")
+        for i in range(Hours)*4:
+            print("█", end="")
+        print("||-<", end="")
+
+    else:
+        #Open the file in read mode
+        file = open("times/times_" + time.strftime("%Y-%m-%d") + ".txt", "r")
+        #Read the file
+        lines = file.readlines()
+
+        #Get the total time worked from the Total time line
+        total_time = 0
+        for line in lines:
+            if "Total time" in line:
+                total_time = total_time + int(line.split(": ")[1].split(":")[0])*3600 + int(line.split(": ")[1].split(":")[1])*60 + int(line.split(": ")[1].split(":")[2])
+
+        #Close the file
+        file.close()
+
+        #Print the progress bar with the total time worked
+        print(">|", end="")
+        #Green part
+        for i in range(total_time//900):
+            print(f"\033[{color_code}m{block}\033[0m", end="")
+        
+        #white part
+        for i in range((Hours*4)-(total_time//900)):
+            print("█", end="")
+        print("|<", end="")
