@@ -85,6 +85,10 @@ def progres_bar():
 
         #Print the progress bar with the total time worked
 
+        # Complete Day 
+        if total_time > Hours * 3600:
+            color_code = 33
+
         print(">|", end="")
         #Green part
         for i in range(total_time//900):

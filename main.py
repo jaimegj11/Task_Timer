@@ -5,8 +5,10 @@ from various import *
 
 
 def main():
+    
     os.system('cls' if os.name == 'nt' else 'clear')
-
+    salute()
+    
     while True:
 
         progres_bar()
@@ -20,10 +22,12 @@ def main():
 
         elif option == "2":
             print("Coming soon")
+
         elif option == "3":
             break
         else:
             print("Invalid option")
+            
         #Clear the screen
         os.system('cls' if os.name == 'nt' else 'clear')
 
